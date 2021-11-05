@@ -88,7 +88,7 @@ router.post("/:username", function (req, res, next) {
   body.username = req.params.username;
   body.web_date = new Date();
 
-  if (body) firebase.database().ref("/reena-webhooks").child(body.id).set(body);
+  //if (body) firebase.database().ref("/reena-webhooks").child(body.id).set(body);
   console.log("stored ");
 
   res.end();
