@@ -82,7 +82,8 @@ router.get("/notifications", function (req, res) {
 
 router.post("/:username", function (req, res, next) {
   console.log("incoming webhook at " + new Date());
-
+  console.log(req.headers);
+  console.log(req.body);
   var body = req.body;
   body.username = req.params.username;
   body.web_date = new Date();
