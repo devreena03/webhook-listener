@@ -94,4 +94,28 @@ router.post("/:username", function (req, res, next) {
   res.end();
 });
 
+router.post("/outlook/:username", function (req, res, next) {
+  console.log("incoming outlook webhook at " + new Date());
+  console.log("user:  " + req.params.username);
+  console.log("header");
+  console.log(req.headers);
+  console.log("body");
+  console.log(req.body);
+  
+  var valid = req.query.validationToken;
+
+ 
+  if(valid){
+    console.log('validation');
+    res.status(200).type('text/plain').send(valid);
+  }else{
+    var body = req.body;
+    body.username = req.params.username;
+    body.web_date = new Date();
+  }
+   //if (body) firebase.database().ref("/reena-webhooks").child(body.id).set(body);
+   console.log("stored ");
+  res.end();
+});
+
 module.exports = router;
